@@ -3,11 +3,15 @@ const {addRecordQuery, getAllRecordsQuery,getRecordQuery,updateDOBQuery,updateEm
  
 const addRecord = async (req, res) => {
     try {
-        const {name, dob, email} = req.body;
-        const result = await client.query(addRecordQuery(name,dob,email));
+        const newRecords = req.body;
+        var count=0;
+        for(record of newRecords) {
+            const result = await client.query(addRecordQuery(record.name, record.dob, record.email));
+            count+=result.rowCount;
+        }
         res.status(201).json({
             status:'Success', 
-            details: `${result.command} ${result.rowCount}`
+            details: `Added ${count} records.`
         });
     } catch (err) {
         res.status(500).json({status:'Failure', details: err.message});

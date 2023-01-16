@@ -18,5 +18,5 @@ app.listen(5000, ()=>{
    console.log('Listening on 5000');
 });
 
-mailer();
-interval(10000);
+//mailer();
+//interval(10000);
