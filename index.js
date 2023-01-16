@@ -19,4 +19,4 @@ app.listen(5000, ()=>{
 });
 
 mailer()
-   .then(()=>interval(5000));
+   .then(()=>interval(600000));
