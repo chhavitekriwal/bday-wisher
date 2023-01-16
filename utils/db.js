@@ -1,6 +1,5 @@
 const { Client } = require('pg');
-const connectionURI = "postgresql://postgres:bday.wisher@db.mdphkcpozvdufvteephd.supabase.co:5432/postgres";
-const client = new Client({connectionString: connectionURI});
+const client = new Client({connectionString: process.env.SUPABASE_CONNECTION_URI});
 
 const {createTableQuery} = require('./queries');
 
