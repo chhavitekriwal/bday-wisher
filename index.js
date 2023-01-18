@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const cron = require('node-cron');
 const {connectDB} = require('./utils/db');
 
 const friendsRoute = require('./routes/friends');
-const { mailer,interval } = require('./utils/dailymailer');
+const { mailScheduler } = require('./utils/dailymailer');
 
 app.use(express.json());
 
@@ -18,5 +19,4 @@ app.listen(5000, ()=>{
    console.log('Listening on 5000');
 });
 
-mailer()
-   .then(()=>interval(120000));
+mailScheduler();

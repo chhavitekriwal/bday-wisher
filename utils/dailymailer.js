@@ -1,5 +1,7 @@
 const { checker } = require('./dailychecker');
 const sgMail = require('@sendgrid/mail');
+const cron = require('node-cron');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
@@ -18,28 +20,14 @@ With love,
 Birthday wala Santa`
             }
 
-            sgMail
-                .send(msg)
-                .then((response) => {
-                    console.log('Mail sent!');
-                })
-                .catch((error) => {
-                    console.error(error.response.body);
-                });  
+            await sgMail.send(msg);
+            console.log('Mail sent!');
         }
     } catch (err) {
         return err;
     }
 };
 
-const interval = (ms) => {
-    setInterval(async () => {
-        try {
-            await mailer();
-        } catch (err) {
-            console.error(err);
-        }
-    }, ms);
-};
+const mailScheduler = () => cron.schedule("*/10 * * * *",async ()=>{await mailer()});
 
-module.exports = {mailer, interval};
+module.exports = {mailScheduler};
