@@ -28,6 +28,6 @@ Birthday wala Santa`
     }
 };
 
-const mailScheduler = () => cron.schedule("*/10 * * * *",async ()=>{await mailer()});
+const mailScheduler = () => cron.schedule("05 00 * * *", async ()=>{await mailer()}, {timezone: 'Asia/Kolkata'});
 
 module.exports = {mailScheduler};
