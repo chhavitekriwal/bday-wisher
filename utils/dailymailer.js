@@ -24,7 +24,7 @@ Birthday wala Santa`
             console.log('Mail sent!');
         }
     } catch (err) {
-        return err;
+        console.error(err);
     }
 };
 

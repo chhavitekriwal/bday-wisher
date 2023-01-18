@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const cron = require('node-cron');
 const {connectDB} = require('./utils/db');
 
 const friendsRoute = require('./routes/friends');
