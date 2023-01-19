@@ -4,7 +4,6 @@ require('dotenv').config();
 const {connectDB} = require('./utils/db');
 
 const friendsRoute = require('./routes/friends');
-const { mailScheduler } = require('./utils/dailymailer');
 
 app.use(express.json());
 
@@ -17,5 +16,3 @@ app.use('/friends', friendsRoute);
 app.listen(5000, ()=>{
    console.log('Listening on 5000');
 });
-
-mailScheduler();
