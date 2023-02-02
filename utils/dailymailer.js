@@ -48,8 +48,8 @@ Birthday wala Santa
 
       await sgMail.send(msg);
       console.log(`Mail sent to ${fren.name}!`);
-      console.log(today);
     }
+  console.log(today);
   } catch (err) {
     console.error(err);
   } finally {
