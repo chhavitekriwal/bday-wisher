@@ -50,6 +50,7 @@ Birthday wala Santa
       console.log(`Mail sent to ${fren.name}!`);
     }
   console.log(today);
+  console.log(todaysDate, todaysMonth);
   } catch (err) {
     console.error(err);
   } finally {
