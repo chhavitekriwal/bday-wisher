@@ -7,11 +7,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 client.connect();
 
 const today = new Date();
-let todaysDate = today.getDate();
-if (todaysDate < 10) todaysDate = "0" + todaysDate;
-let todaysMonth = today.getMonth() + 1;
-if (todaysMonth < 10) todaysMonth = "0" + todaysMonth;
-let currentYear = today.getFullYear();
+const todaysFullDate = today.toLocaleDateString('en-GB',{timeZone:'Asia/Kolkata'});
+const todaysDate = todaysFullDate.substring(0,2);
+const todaysMonth = todaysFullDate.substring(3,5);
+const currentYear = parseInt(todaysFullDate.substring(6,11));
 
 const checker = async () => {
   try {
@@ -58,6 +57,5 @@ Birthday wala Santa
   }
 };
 
-// const mailScheduler = () => cron.schedule("20 00 * * *", async ()=>{await mailer()}, {timezone: 'Asia/Kolkata'});
 
 mailer();
