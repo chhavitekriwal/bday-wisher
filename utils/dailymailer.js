@@ -46,10 +46,9 @@ Birthday wala Santa
       };
 
       await sgMail.send(msg);
-      console.log(`Mail sent to ${fren.name}!`);
+      const now = new Date().toLocaleTimeString("en-US",{timeZone: 'Asia/Kolkata'});
+      console.log(`Mail sent to ${fren.name} at ${now}!`);
     }
-  console.log(today);
-  console.log(todaysDate, todaysMonth);
   } catch (err) {
     console.error(err);
   } finally {
